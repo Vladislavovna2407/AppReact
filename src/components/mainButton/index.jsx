@@ -1,7 +1,3 @@
-export const MainButton =  ({text}) => {
-    return (
-        <button>
-            {text}
-        </button>
-    )
+export const MainButton = ({text}) => {
+  return <button>{text}</button>
 }

@@ -5,9 +5,7 @@ import './App.css'
 import {LoginScreen} from './screens/Login'
 
 function App() {
-  return(
-    <LoginScreen/>
-  )
+  return <LoginScreen />
   /*const [count, setCount] = useState(0)
 
   return (

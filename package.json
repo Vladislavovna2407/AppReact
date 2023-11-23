@@ -7,10 +7,9 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "lint": "eslint .",
-    "lint:fix": "eslint --fix",
+    "lint": "eslint --ext .jsx --ext .js --ext .ts --ext .tsx src",
+    "lint:fix": "eslint --ext .jsx --ext .js --ext .ts --ext .tsx src --fix",
     "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"
-
   },
   "dependencies": {
     "react": "^18.2.0",

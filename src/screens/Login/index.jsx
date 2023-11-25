@@ -3,8 +3,12 @@ import {MainButton} from '../../components/mainButton'
 import {Input} from '../../components/Input'
 import {Label} from '../../components/Labels'
 import {Header} from '../../components/Header'
+import './styleLogin.css'
+import '../../App.css'
+
 
 export const LoginScreen = () => {
+
   const [name, setName] = useState('')
   const [surname, setSurname] = useState('')
   const [password, setPassword] = useState('')

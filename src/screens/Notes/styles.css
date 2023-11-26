@@ -1,0 +1,12 @@
+.buttonContainer {
+  margin-bottom: 20px;
+}
+
+.box {
+  margin-right: 20px;
+}
+
+.box > select {
+  height: 40px;
+  width: 40px;
+}

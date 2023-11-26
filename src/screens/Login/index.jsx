@@ -5,17 +5,22 @@ import {Label} from '../../components/Labels'
 import {Header} from '../../components/Header'
 import './styleLogin.css'
 import '../../App.css'
+import {useNavigate} from 'react-router-dom'
 
 export const LoginScreen = () => {
   const [name, setName] = useState('')
   const [surname, setSurname] = useState('')
   const [password, setPassword] = useState('')
+  const navigate = useNavigate()
 
   function showUser() {
     console.log(`Username: ${name}, surname: ${surname}, password: ${password}`)
     setName('')
     setSurname('')
     setPassword('')
+
+    // Imitation of login process and redirect to notes screen
+    navigate('/notes')
   }
 
   return (

@@ -1,10 +1,10 @@
-import { MainButton } from '../mainButton'
+import {MainButton} from '../mainButton'
 import './styleWindow.css'
-import { Header } from '../Header'
-import { useLocalization } from '../../localization/useLocalization'
+import {Header} from '../Header'
+import {useLocalization} from '../../localization/useLocalization'
 
-export const DeleteModal = ({ title, isOpen, onSubmit, onCancel }) => {
-  const { translations } = useLocalization()
+export const DeleteModal = ({title, isOpen, onSubmit, onCancel}) => {
+  const {translations} = useLocalization()
 
   return (
     <div className={isOpen ? 'modal active' : 'modal'}>

@@ -16,7 +16,7 @@ export const ru = {
   password: 'Пароль',
   private: 'Приватный',
   public: 'Публичный',
-  color: "Цвет",
+  color: 'Цвет',
   regester: 'Форма регистрации',
   yourName: 'Введите свое имя',
   yourSurname: 'Введите свою фамилию',
@@ -26,5 +26,5 @@ export const ru = {
   removeFavourites: 'Удалить из избранного',
   addFavourites: 'Добавить в избранное',
   publicNotes: 'Публичные заметки',
-  goPublic: 'Перейти к публичным заметкам'
+  goPublic: 'Перейти к публичным заметкам',
 }

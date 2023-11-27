@@ -4,7 +4,7 @@ import './App.css'
 import {LoginScreen} from './screens/Login'
 import {NotesScreen} from './screens/Notes'
 import {LocalizationProvider} from './localization/LocalizationProvider'
-import { PublicNotes } from './screens/PublicNotes'
+import {PublicNotes} from './screens/PublicNotes'
 
 /*
   For the public / private notes question of yours, you are correct.
@@ -24,7 +24,7 @@ const router = createBrowserRouter([
   {
     path: '/public-notes',
     element: <PublicNotes />,
-  }
+  },
 ])
 
 function App() {

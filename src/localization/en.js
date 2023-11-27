@@ -26,5 +26,5 @@ export const en = {
   removeFavourites: 'Remove from favorites',
   addFavourites: 'Add to favorite',
   publicNotes: 'Public notes',
-  goPublic: 'Go to public notes'
+  goPublic: 'Go to public notes',
 }

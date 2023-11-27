@@ -1,13 +1,12 @@
-import { useState } from 'react'
-import { MainButton } from '../../components/mainButton'
+import {useState} from 'react'
+import {MainButton} from '../../components/mainButton'
 import './styleMoke.css'
-import { DeleteModal } from '../../components/DeleteModal'
-import { ModalWindow } from '../../components/ModalWindow'
-import { useLocalization } from '../../localization/useLocalization'
+import {DeleteModal} from '../../components/DeleteModal'
+import {ModalWindow} from '../../components/ModalWindow'
+import {useLocalization} from '../../localization/useLocalization'
 
-
-export const ExampleNotes = ({ list }) => {
-  const { translations } = useLocalization()
+export const ExampleNotes = ({list}) => {
+  const {translations} = useLocalization()
   const [deleteModalActive, setModalActive] = useState(false) // Видно ли окно удаления? Да/Нет
   const [noteToDelete, setNoteToDelete] = useState(null) // Какую заметку удаляем?
 
@@ -29,7 +28,7 @@ export const ExampleNotes = ({ list }) => {
     return (
       // As you can see here, we are using "color" property of a note to give every note its own color that will come
       // from back-end in the future and not from our mock local array
-      <div key={item.id} className="card" style={{ backgroundColor: item.color }}>
+      <div key={item.id} className="card" style={{backgroundColor: item.color}}>
         <p>
           <span>{translations['title']}</span> {item.title}
         </p>
@@ -43,7 +42,8 @@ export const ExampleNotes = ({ list }) => {
           <span>{translations['tags']}</span> {item.tags}
         </p>
         <p>
-          <span>{translations['type']} </span>{item.isPublic ? "Public" : "Private"}
+          <span>{translations['type']} </span>
+          {item.isPublic ? 'Public' : 'Private'}
         </p>
         <div className="wrapper">
           {/* With this button we just store our note that we want to delete in state, that we later use in our handleDeleteNote function */}

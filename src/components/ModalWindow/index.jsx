@@ -2,9 +2,10 @@ import { MainButton } from '../mainButton'
 import './styleModalWindow.css'
 import { Header } from '../Header'
 import { useState } from 'react'
-
+import { useLocalization } from '../../localization/useLocalization'
 
 export const ModalWindow = ({ title, isOpen, onSubmit, onCancel, note }) => {
+  const { translations } = useLocalization()
   // As you see here we are setting some values from outside. In this case we reuse our "create modal" to also edit our notes.
   // We just put our values from existing note that we want to edit as an initial value of our state
   const [noteTitle, setNoteTitle] = useState(note?.title ?? '')
@@ -77,38 +78,38 @@ export const ModalWindow = ({ title, isOpen, onSubmit, onCancel, note }) => {
           For private and public notes you would have to add a Switch component and store its value as boolean to later send it
           with everything else to back-end to create new note */}
           <div>
-            <label>Title</label>
+            <label>{translations['title']}</label>
             <input value={noteTitle} onChange={handleNoteTitleChange} />
           </div>
           <div>
-            <label>Text</label>
+            <label>{translations['text']}</label>
             <input value={noteText} onChange={handleNoteTextChange} />
           </div>
           <div>
-            <label>Owner</label>
+            <label>{translations['owner']}</label>
             <input value={noteOwner} onChange={handleNoteOwnerChange} />
           </div>
           <div>
-            <label >Tags</label>
+            <label >{translations['tags']}</label>
             <input value={noteTags} onChange={handleNoteTagsChange} />
           </div>
 
           <div>
-            <label >Color</label>
+            <label >{translations['color']}</label>
             <input value={noteColor} onChange={handleNoteColorChange} />
           </div>
 
           <div className='type'>
-            <label htmlFor="type">Type</label>
+            <label htmlFor="type">{translations['type']}</label>
             <select value={noteType} name='type' onChange={handleNoteTypeChange} >
-              <option value="Private">Private</option>
-              <option value="Public">Public</option>
+              <option value="Private">{translations['private']}</option>
+              <option value="Public">{translations['public']}</option>
             </select>
           </div>
           <div>
             <div className="modalFooter">
-              <MainButton onClick={handleSubmit} text={'Submit'} />
-              <MainButton onClick={handleCancel} text={'Cancel'} />
+              <MainButton onClick={handleSubmit} text={translations['submit']} />
+              <MainButton onClick={handleCancel} text={translations['cancel']} />
             </div>
           </div>
         </div>

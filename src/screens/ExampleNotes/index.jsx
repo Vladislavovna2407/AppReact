@@ -3,8 +3,11 @@ import { MainButton } from '../../components/mainButton'
 import './styleMoke.css'
 import { DeleteModal } from '../../components/DeleteModal'
 import { ModalWindow } from '../../components/ModalWindow'
+import { useLocalization } from '../../localization/useLocalization'
+
 
 export const ExampleNotes = ({ list }) => {
+  const { translations } = useLocalization()
   const [deleteModalActive, setModalActive] = useState(false) // Видно ли окно удаления? Да/Нет
   const [noteToDelete, setNoteToDelete] = useState(null) // Какую заметку удаляем?
 
@@ -28,24 +31,24 @@ export const ExampleNotes = ({ list }) => {
       // from back-end in the future and not from our mock local array
       <div key={item.id} className="card" style={{ backgroundColor: item.color }}>
         <p>
-          <span>Title:</span> {item.title}
+          <span>{translations['title']}</span> {item.title}
         </p>
         <p>
-          <span>Text:</span> {item.text}
+          <span>{translations['text']}</span> {item.text}
         </p>
         <p>
-          <span>Owner:</span> {item.owner}
+          <span>{translations['owner']}</span> {item.owner}
         </p>
         <p>
-          <span>Tags:</span> {item.tags}
+          <span>{translations['tags']}</span> {item.tags}
         </p>
         <p>
-          <span>Type: </span>{item.isPublic ? "Public" : "Private"}
+          <span>{translations['type']} </span>{item.isPublic ? "Public" : "Private"}
         </p>
         <div className="wrapper">
           {/* With this button we just store our note that we want to delete in state, that we later use in our handleDeleteNote function */}
-          <MainButton onClick={() => handleDelete(item)} text={'Delete'} />
-          <MainButton onClick={() => handleEdit(item)} text={'Edit'} />
+          <MainButton onClick={() => handleDelete(item)} text={translations['deleteNote']} />
+          <MainButton onClick={() => handleEdit(item)} text={translations['editNote']} />
         </div>
       </div>
     )
@@ -75,7 +78,7 @@ export const ExampleNotes = ({ list }) => {
     <div className="container">
       {result}
       <DeleteModal
-        title="Are you sure you want to delete this note?"
+        title={translations['wantToDelete']}
         isOpen={deleteModalActive}
         onSubmit={handleDeleteNote}
         onCancel={handleCancelDelete}
@@ -87,7 +90,7 @@ export const ExampleNotes = ({ list }) => {
       it has to be mounted and unmounted when we open it or close it */}
       {editModalActive && (
         <ModalWindow
-          title={'Editing a note'}
+          title={translations['wantToEdit']}
           isOpen={editModalActive}
           note={noteToEdit}
           onSubmit={handleEditNote}

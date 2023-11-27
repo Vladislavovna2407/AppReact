@@ -13,5 +13,18 @@ export const ru = {
   form: 'Форма регистрации',
   name: 'Имя',
   surname: 'Фамилия',
-  password: 'Пароль'
+  password: 'Пароль',
+  private: 'Приватный',
+  public: 'Публичный',
+  color: "Цвет",
+  regester: 'Форма регистрации',
+  yourName: 'Введите свое имя',
+  yourSurname: 'Введите свою фамилию',
+  yourPassword: 'Введите свой пароль',
+  wantToDelete: 'Вы уверены, что хотите удалить?',
+  wantToEdit: 'Редактирование заметки',
+  removeFavourites: 'Удалить из избранного',
+  addFavourites: 'Добавить в избранное',
+  publicNotes: 'Публичные заметки',
+  goPublic: 'Перейти к публичным заметкам'
 }

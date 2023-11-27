@@ -1,8 +1,11 @@
-import {MainButton} from '../mainButton'
+import { MainButton } from '../mainButton'
 import './styleWindow.css'
-import {Header} from '../Header'
+import { Header } from '../Header'
+import { useLocalization } from '../../localization/useLocalization'
 
-export const DeleteModal = ({title, isOpen, onSubmit, onCancel}) => {
+export const DeleteModal = ({ title, isOpen, onSubmit, onCancel }) => {
+  const { translations } = useLocalization()
+
   return (
     <div className={isOpen ? 'modal active' : 'modal'}>
       <div className="modalContent">
@@ -10,8 +13,8 @@ export const DeleteModal = ({title, isOpen, onSubmit, onCancel}) => {
           <Header value={title} />
         </div>
         <div className="modalFooter">
-          <MainButton onClick={onSubmit} text={'Submit'} />
-          <MainButton onClick={onCancel} text={'Cancel'} />
+          <MainButton onClick={onSubmit} text={translations['submit']} />
+          <MainButton onClick={onCancel} text={translations['cancel']} />
         </div>
       </div>
     </div>

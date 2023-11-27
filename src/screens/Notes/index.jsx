@@ -1,10 +1,11 @@
 import {useState} from 'react'
 import {MainButton} from '../../components/mainButton'
 import {ModalWindow} from '../../components/ModalWindow'
-import {ExampleNotes} from '../MokeNotes'
+import {ExampleNotes} from '../ExampleNotes'
 import './styles.css'
 import {LocalizationOptions} from './localizationOptions'
 import {useLocalization} from '../../localization/useLocalization'
+import {useNavigate} from 'react-router-dom'
 
 let list = [
   {id: 1, title: 'title1', text: 'text1', tags: ['tag1'], owner: 'Samir', color: 'steelblue', isPublic: false},
@@ -16,7 +17,8 @@ let list = [
 export const NotesScreen = () => {
   const {translations} = useLocalization()
   const [modalActive, setModalActive] = useState(false)
-
+  const navigate = useNavigate()
+  
   const handleCreateNote = note => {
     // Logic to create note, will be a request to back-end
     console.log('note :>> ', note)
@@ -25,16 +27,20 @@ export const NotesScreen = () => {
   const handleCancelCreate = () => {
     setModalActive(false)
   }
-
+ 
+  function goPublicNotes () {
+    navigate('/public-notes')
+  }
   return (
     <div>
       <div className="buttonContainer">
         <LocalizationOptions />
         <MainButton onClick={() => setModalActive(true)} text={translations['addNote']} />
+        <MainButton onClick={goPublicNotes} text={translations['goPublic']}/>
       </div>
       {modalActive && (
         <ModalWindow
-          title={'Adding a note'}
+          title={translations['addNote']}
           isOpen={modalActive}
           onSubmit={handleCreateNote}
           onCancel={handleCancelCreate}

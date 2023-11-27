@@ -13,5 +13,18 @@ export const en = {
   form: 'Registration form',
   name: 'Name',
   surname: 'Surname',
-  password: 'Password'
+  password: 'Password',
+  private: 'Private',
+  public: 'Public',
+  color: 'color',
+  regester: 'Regestration form',
+  yourName: 'Enter your name',
+  yourSurname: 'Enter your surname',
+  yourPassword: 'Enter your password',
+  wantToDelete: 'Are you sure to delete?',
+  wantToEdit: 'Edit a note',
+  removeFavourites: 'Remove from favorites',
+  addFavourites: 'Add to favorite',
+  publicNotes: 'Public notes',
+  goPublic: 'Go to public notes'
 }

@@ -15,11 +15,10 @@
     padding: 20px;
     border-radius: 12px;
     background-color: white;
-    height: 200px;
+    height: 700px;
     width: 400px;
     color: black;
 }
-
 .modal.active {
     transform: scale(1);
 }
@@ -28,3 +27,12 @@
     display: inline-block;
     
 }
+
+.type {
+    display: flex;
+    justify-content: start;
+}
+
+select {
+    margin: 7px 0 0 15px;
+ }

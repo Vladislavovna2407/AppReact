@@ -7,10 +7,10 @@ import {LocalizationOptions} from './localizationOptions'
 import {useLocalization} from '../../localization/useLocalization'
 
 let list = [
-  {id: 1, title: 'title1', text: 'text1', tags: ['tag1'], owner: 'Samir', color: 'steelblue'},
-  {id: 2, title: 'title2', text: 'text2', tags: ['tag2'], owner: 'Samir', color: 'tomato'},
-  {id: 3, title: 'title3', text: 'text3', tags: ['tag3'], owner: 'Samir', color: 'darkgreen'},
-  {id: 4, title: 'title4', text: 'text4', tags: ['tag4'], owner: 'Samir', color: 'steelblue'},
+  {id: 1, title: 'title1', text: 'text1', tags: ['tag1'], owner: 'Samir', color: 'steelblue', isPublic: false},
+  {id: 2, title: 'title2', text: 'text2', tags: ['tag2'], owner: 'Samir', color: 'tomato', isPublic: false},
+  {id: 3, title: 'title3', text: 'text3', tags: ['tag3'], owner: 'Samir', color: 'darkgreen', isPublic: false},
+  {id: 4, title: 'title4', text: 'text4', tags: ['tag4'], owner: 'Samir', color: 'steelblue', isPublic: false},
 ]
 
 export const NotesScreen = () => {
@@ -34,7 +34,7 @@ export const NotesScreen = () => {
       </div>
       {modalActive && (
         <ModalWindow
-          title={'Добавление заметки'}
+          title={'Adding a note'}
           isOpen={modalActive}
           onSubmit={handleCreateNote}
           onCancel={handleCancelCreate}

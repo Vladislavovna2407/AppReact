@@ -4,14 +4,14 @@ import './styleMoke.css'
 import {DeleteModal} from '../../components/DeleteModal'
 import {ModalWindow} from '../../components/ModalWindow'
 import {useLocalization} from '../../localization/useLocalization'
-import { NotePreview } from '../../components/NotePreview'
+import {NotePreview} from '../../components/NotePreview'
 
 export const ExampleNotes = ({list}) => {
   const {translations} = useLocalization()
   const [deleteModalActive, setModalActive] = useState(false) // Видно ли окно удаления? Да/Нет
   const [noteToDelete, setNoteToDelete] = useState(null) // Какую заметку удаляем?
 
-  const [notePreviewActive, setNotePreviewActive] = useState(false);
+  const [notePreviewActive, setNotePreviewActive] = useState(false)
   const [notePreview, setNoteToPreview] = useState(null)
 
   const [editModalActive, setEditModalActive] = useState(false)
@@ -29,20 +29,20 @@ export const ExampleNotes = ({list}) => {
   }
 
   const handleReadMore = note => {
-    setNoteToPreview(note);
-    setNotePreviewActive(true);
-  };
+    setNoteToPreview(note)
+    setNotePreviewActive(true)
+  }
 
   const handleCancelReadMore = () => {
-    setNoteToPreview(null);
-    setNotePreviewActive(false);
-  };
+    setNoteToPreview(null)
+    setNotePreviewActive(false)
+  }
 
   const result = list.map(item => {
     return (
       // As you can see here, we are using "color" property of a note to give every note its own color that will come
       // from back-end in the future and not from our mock local array
-      <div key={item.id}  className='card' style={{backgroundColor: item.color}}>
+      <div key={item.id} className="card" style={{backgroundColor: item.color}}>
         <p>
           <span>{translations['title']}</span> {item.title}
         </p>
@@ -64,8 +64,8 @@ export const ExampleNotes = ({list}) => {
           <MainButton onClick={() => handleDelete(item)} text={translations['deleteNote']} />
           <MainButton onClick={() => handleEdit(item)} text={translations['editNote']} />
         </div>
-        <div className ='doubbleButton'>
-          <MainButton  onClick={()=> handleReadMore(item)}  text={translations['readMore']}/>
+        <div className="doubbleButton">
+          <MainButton onClick={() => handleReadMore(item)} text={translations['readMore']} />
         </div>
       </div>
     )

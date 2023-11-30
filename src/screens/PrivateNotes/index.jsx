@@ -49,7 +49,7 @@ let list = [
 export const NotesScreen = () => {
   const {translations} = useLocalization()
   const [modalActive, setModalActive] = useState(false)
- 
+
   const navigate = useNavigate()
 
   const handleCreateNote = note => {
@@ -66,15 +66,15 @@ export const NotesScreen = () => {
     navigate('/public-notes')
   }
 
- function logout() {
-   navigate('/')
- }
+  function logout() {
+    navigate('/')
+  }
 
   return (
     <div>
       <div className="buttonContainer">
         <LocalizationOptions />
-        <MainButton onClick={logout} text={translations['logout']}/>
+        <MainButton onClick={logout} text={translations['logout']} />
         <MainButton onClick={() => setModalActive(true)} text={translations['addNote']} />
         <MainButton onClick={goPublicNotes} text={translations['goPublic']} />
       </div>

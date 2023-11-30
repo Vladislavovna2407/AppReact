@@ -1,14 +1,12 @@
-import { Header } from "../Header"
-import { useLocalization } from "../../localization/useLocalization"
-import { LocalizationOptions } from "../../screens/PrivateNotes/localizationOptions"
-import { MainButton } from "../mainButton"
+import {Header} from '../Header'
+import {useLocalization} from '../../localization/useLocalization'
+import {MainButton} from '../mainButton'
 
+export const Handlers = ({isOpen, text, onSubmit}) => {
+  const {translations} = useLocalization()
 
-export const Handlers = ({isOpen,text,onSubmit}) => {
-    const {translations} = useLocalization()
- 
-    return (
-        <div className={isOpen ? 'modal active' : 'modal'}>
+  return (
+    <div className={isOpen ? 'modal active' : 'modal'}>
       <div className="modalContent">
         <div className="modalHeader">
           <Header value={text} />
@@ -18,5 +16,5 @@ export const Handlers = ({isOpen,text,onSubmit}) => {
         </div>
       </div>
     </div>
-    )
+  )
 }

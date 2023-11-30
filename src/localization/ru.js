@@ -29,11 +29,11 @@ export const ru = {
   goPublic: 'Перейти к публичным заметкам',
   changePassword: 'Поменять пароль',
   addNewPassword: 'Введите новый пароль',
-  ok: "Хорошо",
+  ok: 'Хорошо',
   newPassword: 'Вы успешно сменили пароль!',
   goPrivate: 'Перейти к приватным заметкам',
   logout: 'Выйти',
-  removedFavourites:'Заметка удалена из избранного!',
+  removedFavourites: 'Заметка удалена из избранного!',
   addedFavourites: 'Заметка добавлена в избранное!',
-  readMore:'Подробнее...'
+  readMore: 'Подробнее...',
 }

@@ -1,9 +1,8 @@
 import {MainButton} from '../mainButton'
 import '../ModalWindow/styleModalWindow.css'
-import {Header} from '../Header'
 import {useLocalization} from '../../localization/useLocalization'
 
-export const NotePreview = ({title, isOpen, onCancel, note}) => {
+export const NotePreview = ({isOpen, onCancel, note}) => {
   const {translations} = useLocalization()
   const handleCancel = () => {
     onCancel()
@@ -15,7 +14,7 @@ export const NotePreview = ({title, isOpen, onCancel, note}) => {
         <div className="modalBody">
           <div>
             <label>{translations['title']}</label>
-            <input disabled value={note.title}/>
+            <input disabled value={note.title} />
           </div>
           <div>
             <label>{translations['text']}</label>
@@ -38,13 +37,11 @@ export const NotePreview = ({title, isOpen, onCancel, note}) => {
           <div className="type">
             <label htmlFor="type">{translations['type']}</label>
             <select disabled value={note.isPublic} name="type">
-                {
-                    note.isPublic ? (
-                        <option value="Public">{translations['public']}</option>
-                    ) : (
-                        <option value="Private">{translations['private']}</option>
-                    )
-                }
+              {note.isPublic ? (
+                <option value="Public">{translations['public']}</option>
+              ) : (
+                <option value="Private">{translations['private']}</option>
+              )}
             </select>
           </div>
           <div>

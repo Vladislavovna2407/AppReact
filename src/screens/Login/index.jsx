@@ -6,7 +6,7 @@ import {Header} from '../../components/Header'
 import './styleLogin.css'
 import '../../App.css'
 import {useNavigate} from 'react-router-dom'
-import { LocalizationOptions } from '../PrivateNotes/localizationOptions'
+import {LocalizationOptions} from '../PrivateNotes/localizationOptions'
 import {useLocalization} from '../../localization/useLocalization'
 
 export const LoginScreen = () => {
@@ -33,7 +33,7 @@ export const LoginScreen = () => {
   return (
     <div className="buttonContainer">
       <LocalizationOptions />
-      <MainButton onClick={changePassword} text={translations['changePassword']}/>
+      <MainButton onClick={changePassword} text={translations['changePassword']} />
       <form>
         <Header value={translations['regester']} />
         <Label name={'Name'} value={translations['name']} />

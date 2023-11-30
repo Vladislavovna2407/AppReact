@@ -6,6 +6,7 @@ import { useLocalization } from '../../localization/useLocalization'
 import { useNavigate } from 'react-router-dom'
 import { Handlers } from '../../components/Handlers'
 import { useState } from 'react'
+import { NotePreview } from '../../components/NotePreview'
 
 //let item = { id: 1, title: 'newTitle2', text: 'newText2', tags: ['newTag2'], owner: 'Ira', color: 'pink', isPublic: true }
 
@@ -14,6 +15,20 @@ export const PublicNotes = () => {
   const navigate = useNavigate()
   const[addHandler, setAddHandler] = useState(false)
   const[removeHandler, setRemoveHandler] = useState(false)
+
+  const [notePreviewActive, setNotePreviewActive] = useState(false);
+  const [notePreview, setNoteToPreview] = useState(null)
+
+  const handleReadMore = note => {
+    setNoteToPreview(note);
+    setNotePreviewActive(true);
+  };
+
+  const handleCancelReadMore = () => {
+    setNoteToPreview(null);
+    setNotePreviewActive(false);
+  };
+
   let publicList = [
     {
       id: 1,
@@ -74,6 +89,9 @@ export const PublicNotes = () => {
           <MainButton onClick={()=>setRemoveHandler(true)} text={translations['removeFavourites']} />
           <MainButton onClick={()=>setAddHandler(true)} text={translations['addFavourites']} />
         </div>
+        <div className ='doubbleButton'>
+          <MainButton  onClick={()=> handleReadMore(item)}  text={translations['readMore']}/>
+        </div>
       </div>
     )
   })
@@ -98,6 +116,14 @@ export const PublicNotes = () => {
       </div>
       <Header value={translations['publicNotes']} />
       {result}
+      {notePreviewActive && (
+        <NotePreview
+          title={translations['readMore']}
+          isOpen={notePreviewActive}
+          note={notePreview}
+          onCancel={handleCancelReadMore}
+        />
+      )}
     </div>
   )
 }

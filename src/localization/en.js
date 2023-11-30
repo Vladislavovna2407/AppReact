@@ -16,7 +16,7 @@ export const en = {
   password: 'Password',
   private: 'Private',
   public: 'Public',
-  color: 'color',
+  color: 'Color',
   regester: 'Regestration form',
   yourName: 'Enter your name',
   yourSurname: 'Enter your surname',

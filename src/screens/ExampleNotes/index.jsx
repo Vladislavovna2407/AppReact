@@ -9,7 +9,7 @@ export const ExampleNotes = ({list}) => {
   const {translations} = useLocalization()
   const [deleteModalActive, setModalActive] = useState(false) // Видно ли окно удаления? Да/Нет
   const [noteToDelete, setNoteToDelete] = useState(null) // Какую заметку удаляем?
-
+  const[state,setState] = useState(null)
   const [editModalActive, setEditModalActive] = useState(false)
   const [noteToEdit, setNoteToEdit] = useState(null)
 
@@ -24,11 +24,17 @@ export const ExampleNotes = ({list}) => {
     setEditModalActive(true)
   }
 
+  const readMore = note => {
+    setState(note)
+    setEditModalActive(true)
+  }
+
+
   const result = list.map(item => {
     return (
       // As you can see here, we are using "color" property of a note to give every note its own color that will come
       // from back-end in the future and not from our mock local array
-      <div key={item.id} className="card" style={{backgroundColor: item.color}}>
+      <div key={item.id}  className='card' style={{backgroundColor: item.color}}>
         <p>
           <span>{translations['title']}</span> {item.title}
         </p>
@@ -50,6 +56,9 @@ export const ExampleNotes = ({list}) => {
           <MainButton onClick={() => handleDelete(item)} text={translations['deleteNote']} />
           <MainButton onClick={() => handleEdit(item)} text={translations['editNote']} />
         </div>
+        <div className ='doubbleButton'>
+        <MainButton  onClick={()=>readMore(item)}  text={translations['readMore']}/>
+        </div>
       </div>
     )
   })
@@ -62,11 +71,13 @@ export const ExampleNotes = ({list}) => {
   const handleDeleteNote = () => {
     // Here we would be using the logic to delete our note with a request to back-end
     console.log('--', noteToDelete)
+    setModalActive(false)
   }
 
   const handleEditNote = note => {
     // Here we would perform another back-end request to edit our note
     console.log('note :>> ', note)
+    setEditModalActive(false)
   }
 
   const handleCancelEdit = () => {

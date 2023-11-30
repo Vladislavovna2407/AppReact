@@ -11,3 +11,14 @@
    
 }
 
+.publicButton {
+    margin-top: 25px;
+    background-color: #000;
+    color: #fff;
+    margin-right: 5px;
+    padding: 5px;
+    width: 95px;
+    height: 30px;
+  
+}
+

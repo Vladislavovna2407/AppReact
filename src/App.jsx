@@ -2,9 +2,10 @@ import {RouterProvider, createBrowserRouter} from 'react-router-dom'
 
 import './App.css'
 import {LoginScreen} from './screens/Login'
-import {NotesScreen} from './screens/Notes'
+import { NotesScreen } from './screens/PrivateNotes'
 import {LocalizationProvider} from './localization/LocalizationProvider'
 import {PublicNotes} from './screens/PublicNotes'
+import { ChangePassword } from './screens/ChangePassword'
 
 /*
   For the public / private notes question of yours, you are correct.
@@ -18,13 +19,17 @@ const router = createBrowserRouter([
     element: <LoginScreen />,
   },
   {
-    path: '/notes',
+    path: '/private-notes',
     element: <NotesScreen />,
   },
   {
     path: '/public-notes',
     element: <PublicNotes />,
   },
+  {
+    path: '/change',
+    element: <ChangePassword/>
+  }
 ])
 
 function App() {

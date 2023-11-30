@@ -27,4 +27,13 @@ export const ru = {
   addFavourites: 'Добавить в избранное',
   publicNotes: 'Публичные заметки',
   goPublic: 'Перейти к публичным заметкам',
+  changePassword: 'Поменять пароль',
+  addNewPassword: 'Введите новый пароль',
+  ok: "Хорошо",
+  newPassword: 'Вы успешно сменили пароль!',
+  goPrivate: 'Перейти к приватным заметкам',
+  logout: 'Выйти',
+  removedFavourites:'Заметка удалена из избранного!',
+  addedFavourites: 'Заметка добавлена в избранное!',
+  readMore:'Подробнее...'
 }

@@ -27,4 +27,13 @@ export const en = {
   addFavourites: 'Add to favorite',
   publicNotes: 'Public notes',
   goPublic: 'Go to public notes',
+  changePassword: 'Change password',
+  addNewPassword: 'Enter a new password',
+  ok: "Okey",
+  newPassword: 'You have successfully changed your password',
+  goPrivate: 'Go to private notes',
+  logout: 'LogOut',
+  removedFavourites: 'The note was removed from favorites!',
+  addedFavourites: 'The note was added to favorites!',
+  readMore:'Read more...'
 }

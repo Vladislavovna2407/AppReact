@@ -1,13 +1,34 @@
 import {Header} from '../../components/Header'
 import {MainButton} from '../../components/mainButton'
-import {LocalizationOptions} from '../Notes/localizationOptions'
+import {LocalizationOptions} from '../PrivateNotes/localizationOptions'
 import './stylePublic.css'
 import {useLocalization} from '../../localization/useLocalization'
+import {useNavigate} from 'react-router-dom'
+import {Handlers} from '../../components/Handlers'
+import {useState} from 'react'
+import {NotePreview} from '../../components/NotePreview'
 
 //let item = { id: 1, title: 'newTitle2', text: 'newText2', tags: ['newTag2'], owner: 'Ira', color: 'pink', isPublic: true }
 
 export const PublicNotes = () => {
   const {translations} = useLocalization()
+  const navigate = useNavigate()
+  const [addHandler, setAddHandler] = useState(false)
+  const [removeHandler, setRemoveHandler] = useState(false)
+
+  const [notePreviewActive, setNotePreviewActive] = useState(false)
+  const [notePreview, setNoteToPreview] = useState(null)
+
+  const handleReadMore = note => {
+    setNoteToPreview(note)
+    setNotePreviewActive(true)
+  }
+
+  const handleCancelReadMore = () => {
+    setNoteToPreview(null)
+    setNotePreviewActive(false)
+  }
+
   let publicList = [
     {
       id: 1,
@@ -28,6 +49,14 @@ export const PublicNotes = () => {
       isPublic: true,
     },
   ]
+
+  function goPrivate() {
+    navigate('/private-notes')
+  }
+
+  function logout() {
+    navigate('/')
+  }
 
   const result = publicList.map(item => {
     return (
@@ -53,20 +82,50 @@ export const PublicNotes = () => {
         </p>
         <div className="wrapper">
           {/* With this button we just store our note that we want to delete in state, that we later use in our handleDeleteNote function */}
-          <MainButton text={translations['removeFavourites']} />
-          <MainButton text={translations['addFavourites']} />
+          <MainButton
+            onClick={() => setRemoveHandler(true)}
+            text={translations['removeFavourites']}
+          />
+          <MainButton onClick={() => setAddHandler(true)} text={translations['addFavourites']} />
+        </div>
+        <div className="doubbleButton">
+          <MainButton onClick={() => handleReadMore(item)} text={translations['readMore']} />
         </div>
       </div>
     )
   })
 
   return (
-    <div>
+    <div className="containerNotes">
       <div className="buttonContainer">
+        <MainButton
+          onClick={() => goPrivate()}
+          text={translations['goPrivate']}
+          className="publicButton"
+        />
+        <MainButton onClick={logout} text={translations['logout']} />
+        <Handlers
+          isOpen={removeHandler}
+          text={translations['removedFavourites']}
+          onSubmit={() => setRemoveHandler(false)}
+        />
+        <Handlers
+          isOpen={addHandler}
+          text={translations['addedFavourites']}
+          onSubmit={() => setAddHandler(false)}
+        />
         <LocalizationOptions />
       </div>
       <Header value={translations['publicNotes']} />
       {result}
+      {notePreviewActive && (
+        <NotePreview
+          title={translations['readMore']}
+          isOpen={notePreviewActive}
+          note={notePreview}
+          onCancel={handleCancelReadMore}
+        />
+      )}
     </div>
   )
 }

@@ -18,13 +18,9 @@
     height: 450px;
     width: 400px;
     color: black;
+   
 }
 
 .modal.active {
     transform: scale(1);
-}
-
-.modalFooter {
-    display: inline-block;
-    
 }

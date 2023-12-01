@@ -4,11 +4,15 @@ import './styleMoke.css'
 import {DeleteModal} from '../../components/DeleteModal'
 import {ModalWindow} from '../../components/ModalWindow'
 import {useLocalization} from '../../localization/useLocalization'
+import {NotePreview} from '../../components/NotePreview'
 
 export const ExampleNotes = ({list}) => {
   const {translations} = useLocalization()
   const [deleteModalActive, setModalActive] = useState(false) // Видно ли окно удаления? Да/Нет
   const [noteToDelete, setNoteToDelete] = useState(null) // Какую заметку удаляем?
+
+  const [notePreviewActive, setNotePreviewActive] = useState(false)
+  const [notePreview, setNoteToPreview] = useState(null)
 
   const [editModalActive, setEditModalActive] = useState(false)
   const [noteToEdit, setNoteToEdit] = useState(null)
@@ -22,6 +26,16 @@ export const ExampleNotes = ({list}) => {
     // Here we firstly save the note that we want to edit to our state and then open the modal window
     setNoteToEdit(note)
     setEditModalActive(true)
+  }
+
+  const handleReadMore = note => {
+    setNoteToPreview(note)
+    setNotePreviewActive(true)
+  }
+
+  const handleCancelReadMore = () => {
+    setNoteToPreview(null)
+    setNotePreviewActive(false)
   }
 
   const result = list.map(item => {
@@ -50,6 +64,9 @@ export const ExampleNotes = ({list}) => {
           <MainButton onClick={() => handleDelete(item)} text={translations['deleteNote']} />
           <MainButton onClick={() => handleEdit(item)} text={translations['editNote']} />
         </div>
+        <div className="doubbleButton">
+          <MainButton onClick={() => handleReadMore(item)} text={translations['readMore']} />
+        </div>
       </div>
     )
   })
@@ -62,11 +79,13 @@ export const ExampleNotes = ({list}) => {
   const handleDeleteNote = () => {
     // Here we would be using the logic to delete our note with a request to back-end
     console.log('--', noteToDelete)
+    setModalActive(false)
   }
 
   const handleEditNote = note => {
     // Here we would perform another back-end request to edit our note
     console.log('note :>> ', note)
+    setEditModalActive(false)
   }
 
   const handleCancelEdit = () => {
@@ -95,6 +114,14 @@ export const ExampleNotes = ({list}) => {
           note={noteToEdit}
           onSubmit={handleEditNote}
           onCancel={handleCancelEdit}
+        />
+      )}
+      {notePreviewActive && (
+        <NotePreview
+          title={translations['readMore']}
+          isOpen={notePreviewActive}
+          note={notePreview}
+          onCancel={handleCancelReadMore}
         />
       )}
     </div>

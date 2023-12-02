@@ -55,6 +55,7 @@ export const PublicNotes = () => {
   }
 
   function logout() {
+    localStorage.clear()
     navigate('/')
   }
 

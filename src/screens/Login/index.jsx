@@ -12,18 +12,37 @@ import {useLocalization} from '../../localization/useLocalization'
 export const LoginScreen = () => {
   const {translations} = useLocalization()
   const [name, setName] = useState('')
-  const [surname, setSurname] = useState('')
   const [password, setPassword] = useState('')
   const navigate = useNavigate()
 
   function showUser() {
-    console.log(`Username: ${name}, surname: ${surname}, password: ${password}`)
-    setName('')
-    setSurname('')
-    setPassword('')
+    let user = {
+      username: name,
+      password: password,
+    }
 
-    // Imitation of login process and redirect to notes screen
-    navigate('/private-notes')
+    console.log(user)
+
+    const url = 'https://dull-pear-haddock-belt.cyclic.app/auth'
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(user),
+    })
+      .then(response => response.json())
+      .then(response => {
+        localStorage.setItem('token', response.token)
+
+        console.log(response)
+
+        setName('')
+        setPassword('')
+
+        navigate('/private-notes')
+      })
+      .catch(() => alert('User Not Found!'))
   }
 
   function changePassword() {
@@ -43,14 +62,6 @@ export const LoginScreen = () => {
           answer={'Name'}
           value={name}
           onChange={event => setName(event.target.value)}
-        />
-        <Label name={'Surname'} value={translations['surname']} />
-        <Input
-          state={'text'}
-          value1={translations['regester']}
-          answer={'Surname'}
-          value={surname}
-          onChange={event => setSurname(event.target.value)}
         />
         <Label name={'Password'} value={translations['password']} />
         <Input

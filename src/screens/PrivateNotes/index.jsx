@@ -67,6 +67,7 @@ export const NotesScreen = () => {
   }
 
   function logout() {
+    localStorage.clear()
     navigate('/')
   }
 

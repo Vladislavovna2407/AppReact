@@ -7,7 +7,7 @@ import {LocalizationOptions} from './localizationOptions'
 import {useLocalization} from '../../localization/useLocalization'
 import {useNavigate} from 'react-router-dom'
 
-let list = [
+export const list = [
   {
     id: 1,
     title: 'title1',

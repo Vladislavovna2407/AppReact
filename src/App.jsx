@@ -6,6 +6,8 @@ import {NotesScreen} from './screens/PrivateNotes'
 import {LocalizationProvider} from './localization/LocalizationProvider'
 import {PublicNotes} from './screens/PublicNotes'
 import {ChangePassword} from './screens/ChangePassword'
+import {Provider} from 'react-redux'
+import {store} from './redux/store'
 
 /*
   For the public / private notes question of yours, you are correct.
@@ -35,9 +37,11 @@ const router = createBrowserRouter([
 function App() {
   return (
     // We are adding Localization Provider so that we can use our locales and translations inside our project
-    <LocalizationProvider>
-      <RouterProvider router={router} />
-    </LocalizationProvider>
+    <Provider store={store}>
+      <LocalizationProvider>
+        <RouterProvider router={router} />
+      </LocalizationProvider>
+    </Provider>
   )
 }
 

@@ -1,3 +1,4 @@
+import {useDispatch, useSelector} from 'react-redux'
 import {useState} from 'react'
 import {MainButton} from '../../components/mainButton'
 import './styleMoke.css'
@@ -5,8 +6,13 @@ import {DeleteModal} from '../../components/DeleteModal'
 import {ModalWindow} from '../../components/ModalWindow'
 import {useLocalization} from '../../localization/useLocalization'
 import {NotePreview} from '../../components/NotePreview'
+import {updateNoteActionCreator} from '../../redux/reducers/notes'
+//import {list} from '../PrivateNotes'
+import {deleteNoteActionCreator} from '../../redux/reducers/notes'
 
-export const ExampleNotes = ({list}) => {
+export const ExampleNotes = (/*{list}*/) => {
+  const notes = useSelector(state => state.notes.notes)
+  const dispatch = useDispatch()
   const {translations} = useLocalization()
   const [deleteModalActive, setModalActive] = useState(false) // Видно ли окно удаления? Да/Нет
   const [noteToDelete, setNoteToDelete] = useState(null) // Какую заметку удаляем?
@@ -17,14 +23,16 @@ export const ExampleNotes = ({list}) => {
   const [editModalActive, setEditModalActive] = useState(false)
   const [noteToEdit, setNoteToEdit] = useState(null)
 
-  const handleDelete = note => {
-    setNoteToDelete(note)
+  const handleDelete = id => {
+    dispatch(deleteNoteActionCreator(id))
+    //setNoteToDelete(note)
     setModalActive(true)
   }
 
-  const handleEdit = note => {
+  const handleEdit = id => {
     // Here we firstly save the note that we want to edit to our state and then open the modal window
-    setNoteToEdit(note)
+    dispatch(updateNoteActionCreator(id))
+    //setNoteToEdit(note)
     setEditModalActive(true)
   }
 
@@ -38,7 +46,7 @@ export const ExampleNotes = ({list}) => {
     setNotePreviewActive(false)
   }
 
-  const result = list.map(item => {
+  const result = notes.map(item => {
     return (
       // As you can see here, we are using "color" property of a note to give every note its own color that will come
       // from back-end in the future and not from our mock local array

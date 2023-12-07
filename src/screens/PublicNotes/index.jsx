@@ -15,7 +15,6 @@ export const PublicNotes = () => {
   const navigate = useNavigate()
   const [addHandler, setAddHandler] = useState(false)
   const [removeHandler, setRemoveHandler] = useState(false)
-
   const [notePreviewActive, setNotePreviewActive] = useState(false)
   const [notePreview, setNoteToPreview] = useState(null)
 

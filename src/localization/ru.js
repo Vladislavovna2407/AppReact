@@ -36,4 +36,5 @@ export const ru = {
   removedFavourites: 'Заметка удалена из избранного!',
   addedFavourites: 'Заметка добавлена в избранное!',
   readMore: 'Подробнее...',
+  favourite: "Избранное"
 }

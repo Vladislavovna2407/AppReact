@@ -15,7 +15,6 @@ export const PublicNotes = () => {
   const navigate = useNavigate()
   const [addHandler, setAddHandler] = useState(false)
   const [removeHandler, setRemoveHandler] = useState(false)
-
   const [notePreviewActive, setNotePreviewActive] = useState(false)
   const [notePreview, setNoteToPreview] = useState(null)
 
@@ -59,6 +58,7 @@ export const PublicNotes = () => {
     navigate('/')
   }
 
+
   const result = publicList.map(item => {
     return (
       // As you can see here, we are using "color" property of a note to give every note its own color that will come
@@ -84,10 +84,10 @@ export const PublicNotes = () => {
         <div className="wrapper">
           {/* With this button we just store our note that we want to delete in state, that we later use in our handleDeleteNote function */}
           <MainButton
-            onClick={() => setRemoveHandler(true)}
+            onClick={()=>setRemoveHandler(true)}
             text={translations['removeFavourites']}
           />
-          <MainButton onClick={() => setAddHandler(true)} text={translations['addFavourites']} />
+          <MainButton onClick={()=>setAddHandler(true)} text={translations['addFavourites']} />
         </div>
         <div className="doubbleButton">
           <MainButton onClick={() => handleReadMore(item)} text={translations['readMore']} />
@@ -113,7 +113,7 @@ export const PublicNotes = () => {
         <Handlers
           isOpen={addHandler}
           text={translations['addedFavourites']}
-          onSubmit={() => setAddHandler(false)}
+          onSubmit={()=>setAddHandler(false)}
         />
         <LocalizationOptions />
       </div>

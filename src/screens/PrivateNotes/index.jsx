@@ -6,47 +6,12 @@ import './styles.css'
 import {LocalizationOptions} from './localizationOptions'
 import {useLocalization} from '../../localization/useLocalization'
 import {useNavigate} from 'react-router-dom'
-
-export const list = [
-  {
-    id: 1,
-    title: 'title1',
-    text: 'text1',
-    tags: ['tag1'],
-    owner: 'Samir',
-    color: 'steelblue',
-    isPublic: false,
-  },
-  {
-    id: 2,
-    title: 'title2',
-    text: 'text2',
-    tags: ['tag2'],
-    owner: 'Samir',
-    color: 'tomato',
-    isPublic: false,
-  },
-  {
-    id: 3,
-    title: 'title3',
-    text: 'text3',
-    tags: ['tag3'],
-    owner: 'Samir',
-    color: 'darkgreen',
-    isPublic: false,
-  },
-  {
-    id: 4,
-    title: 'title4',
-    text: 'text4',
-    tags: ['tag4'],
-    owner: 'Samir',
-    color: 'steelblue',
-    isPublic: false,
-  },
-]
+import { useDispatch, useSelector } from 'react-redux'
+import { addNoteActionCreator } from '../../redux/reducers/notes'
 
 export const NotesScreen = () => {
+  const dispatch= useDispatch()
+  const list = useSelector(state => state.notes.notes)
   const {translations} = useLocalization()
   const [modalActive, setModalActive] = useState(false)
 
@@ -54,6 +19,9 @@ export const NotesScreen = () => {
 
   const handleCreateNote = note => {
     // Logic to create note, will be a request to back-end
+    let theLastId = Math.max(...list.map(note => note.id));
+    note.id = ++theLastId;
+    dispatch(addNoteActionCreator( note))
     console.log('note :>> ', note)
     setModalActive(false)
   }

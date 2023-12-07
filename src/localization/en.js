@@ -36,5 +36,5 @@ export const en = {
   removedFavourites: 'The note was removed from favorites!',
   addedFavourites: 'The note was added to favorites!',
   readMore: 'Read more...',
-  favourite: "favorites",
+  favourite: 'favorites',
 }

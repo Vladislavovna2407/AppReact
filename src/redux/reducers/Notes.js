@@ -37,7 +37,6 @@ const initialState = {
       isPublic: false,
     },
   ],
-
 }
 export const deleteNoteActionCreator = noteToDelete => ({
   type: 'DELETE_NOTE',
@@ -51,7 +50,7 @@ export const updateNoteActionCreator = updatedNote => ({
 
 export const addNoteActionCreator = addNote => ({
   type: 'ADD_NOTE',
-  payload: addNote
+  payload: addNote,
 })
 
 export const notesReducer = (state = initialState, action) => {
@@ -59,12 +58,12 @@ export const notesReducer = (state = initialState, action) => {
     case 'DELETE_NOTE':
       return {
         ...state,
-        notes: state.notes.filter(note => note.id !== action.payload.id)
+        notes: state.notes.filter(note => note.id !== action.payload.id),
       }
     case 'ADD_NOTE':
       return {
         ...state,
-        notes: [...state.notes, action.payload]
+        notes: [...state.notes, action.payload],
       }
     case 'UPDATE_NOTE':
       return {
@@ -72,7 +71,7 @@ export const notesReducer = (state = initialState, action) => {
         notes: state.notes.map(note => {
           if (note.id === action.payload.id) return action.payload
           return note
-        })
+        }),
       }
     default:
       return state

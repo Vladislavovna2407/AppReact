@@ -6,11 +6,11 @@ import './styles.css'
 import {LocalizationOptions} from './localizationOptions'
 import {useLocalization} from '../../localization/useLocalization'
 import {useNavigate} from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
-import { addNoteActionCreator } from '../../redux/reducers/notes'
+import {useDispatch, useSelector} from 'react-redux'
+import {addNoteActionCreator} from '../../redux/reducers/notes'
 
 export const NotesScreen = () => {
-  const dispatch= useDispatch()
+  const dispatch = useDispatch()
   const list = useSelector(state => state.notes.notes)
   const {translations} = useLocalization()
   const [modalActive, setModalActive] = useState(false)
@@ -19,9 +19,9 @@ export const NotesScreen = () => {
 
   const handleCreateNote = note => {
     // Logic to create note, will be a request to back-end
-    let theLastId = Math.max(...list.map(note => note.id));
-    note.id = ++theLastId;
-    dispatch(addNoteActionCreator( note))
+    let theLastId = Math.max(...list.map(note => note.id))
+    note.id = ++theLastId
+    dispatch(addNoteActionCreator(note))
     console.log('note :>> ', note)
     setModalActive(false)
   }

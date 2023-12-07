@@ -1,4 +1,4 @@
-import {useDispatch, useSelector} from 'react-redux'
+import {useDispatch} from 'react-redux'
 import {useState} from 'react'
 import {MainButton} from '../../components/mainButton'
 import './styleMoke.css'
@@ -9,10 +9,8 @@ import {NotePreview} from '../../components/NotePreview'
 import {updateNoteActionCreator} from '../../redux/reducers/notes'
 import {deleteNoteActionCreator} from '../../redux/reducers/notes'
 
-
 export const ExampleNotes = ({list}) => {
   const dispatch = useDispatch()
-  const notes = useSelector(state => state.notes.notes)
   const {translations} = useLocalization()
   const [deleteModalActive, setModalActive] = useState(false) // Видно ли окно удаления? Да/Нет
   const [noteToDelete, setNoteToDelete] = useState(null) // Какую заметку удаляем?
@@ -81,7 +79,6 @@ export const ExampleNotes = ({list}) => {
   const handleCancelDelete = () => {
     setModalActive(false)
     setNoteToDelete(null)
-   
   }
 
   const handleDeleteNote = () => {
@@ -89,11 +86,10 @@ export const ExampleNotes = ({list}) => {
     dispatch(deleteNoteActionCreator(noteToDelete))
     console.log('--', noteToDelete)
     setModalActive(false)
-    
   }
 
   const handleEditNote = note => {
-    note.id = noteToEdit.id;
+    note.id = noteToEdit.id
     // Here we would perform another back-end request to edit our note
     dispatch(updateNoteActionCreator(note))
     console.log('note :>> ', note)
@@ -103,7 +99,6 @@ export const ExampleNotes = ({list}) => {
   const handleCancelEdit = () => {
     setEditModalActive(false)
     setNoteToEdit(null)
-   
   }
 
   return (
